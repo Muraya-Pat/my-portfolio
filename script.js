@@ -76,6 +76,7 @@ window.addEventListener('scroll', () => {
 
 // Contact Form Handling
 const contactForm = document.querySelector('.contact-form');
+const formMessage = document.getElementById('formMessage');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -87,10 +88,16 @@ contactForm.addEventListener('submit', (e) => {
     };
     
     // Show success message
-    alert(`Thank you, ${formData.name}! Your message has been received. I'll get back to you soon.`);
+    formMessage.textContent = `Thank you, ${formData.name}! Your message has been received. I'll get back to you soon.`;
+    formMessage.className = 'form-message success';
     
     // Reset form
     contactForm.reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+        formMessage.className = 'form-message';
+    }, 5000);
     
     // In a real application, you would send this data to a server
     // Example: fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
