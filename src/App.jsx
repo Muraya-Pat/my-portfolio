@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Github, Linkedin, Gamepad2, Bot, Palette, Code, Mail,
   Briefcase, ExternalLink, User, Menu, X, Home, ChevronDown,
-  GraduationCap, Award, Download, Cpu, Sparkles
+  GraduationCap, Award, Download, Cpu, Sparkles, MessageCircle
 } from 'lucide-react';
+import profileImage from './assets/profile.jpg';
 
 // --- CUSTOM TYPEWRITER HOOK ---
 const useTypewriter = (words, speed = 150, deleteSpeed = 100) => {
@@ -46,6 +47,17 @@ const useTypewriter = (words, speed = 150, deleteSpeed = 100) => {
 export default function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const activeRole = useTypewriter(['Software Developer', 'Game Developer', 'UI/UX Expert', 'AI Explorer']);
+
+  // --- STARS CONFIG ---
+  const [stars] = useState(() => [...Array(30)].map(() => ({
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    duration: Math.random() * 3 + 2,
+    delay: Math.random() * 5,
+    initialOpacity: Math.random() * 0.5 + 0.1,
+    initialScale: Math.random() * 0.5 + 0.5
+  })));
 
   // --- FONT LOADING ---
   useEffect(() => {
@@ -97,32 +109,32 @@ export default function App() {
     <div className="font-['Nunito'] bg-slate-50 text-slate-900 selection:bg-purple-500 selection:text-white">
 
       {/* --- NAVIGATION BAR --- */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/50 backdrop-blur-md border-b border-white/10 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 cursor-pointer" onClick={() => scrollToSection('hero')}>
+          <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 cursor-pointer" onClick={() => scrollToSection('hero')}>
             PM.
           </span>
 
           <div className="hidden md:flex gap-6">
             {navLinks.map((link) => (
-              <button key={link.name} onClick={() => scrollToSection(link.id)} className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+              <button key={link.name} onClick={() => scrollToSection(link.id)} className="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors">
                 {link.icon} {link.name}
               </button>
             ))}
           </div>
 
-          <button className="md:hidden p-2 text-slate-600" onClick={() => setIsNavOpen(!isNavOpen)}>
+          <button className="md:hidden p-2 text-slate-300" onClick={() => setIsNavOpen(!isNavOpen)}>
             {isNavOpen ? <X /> : <Menu />}
           </button>
         </div>
 
         <AnimatePresence>
           {isNavOpen && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="md:hidden bg-white border-b border-slate-200 overflow-hidden">
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="md:hidden bg-slate-900/90 border-b border-white/10 backdrop-blur-xl overflow-hidden">
               <div className="flex flex-col p-4 gap-4">
                 {navLinks.map((link) => (
-                  <button key={link.name} onClick={() => scrollToSection(link.id)} className="flex items-center gap-3 text-lg font-medium text-slate-700 p-2 hover:bg-slate-50 rounded-lg">
-                    <span className="text-blue-500">{link.icon}</span> {link.name}
+                  <button key={link.name} onClick={() => scrollToSection(link.id)} className="flex items-center gap-3 text-lg font-medium text-slate-300 p-2 hover:bg-white/10 rounded-lg">
+                    <span className="text-blue-400">{link.icon}</span> {link.name}
                   </button>
                 ))}
               </div>
@@ -134,20 +146,60 @@ export default function App() {
       {/* --- HERO SECTION --- */}
       <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f172a]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e1b4b] via-[#0f172a] to-[#000000] z-0"></div>
+
+        {/* 1. Cyber Grid Background (Restored) */}
+        <div className="absolute inset-0 z-0 opacity-20"
+             style={{
+               backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+               backgroundSize: '50px 50px'
+             }}>
+        </div>
+
+        {/* 2. Ambient Nebula Glows */}
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse z-0"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-600/20 rounded-full blur-[120px] animate-pulse z-0"></div>
+        <div className="absolute top-[40%] left-[60%] w-[300px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] animate-pulse z-0"></div>
+
+        {/* 3. Twinkling Stars (New) */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {stars.map((star, i) => (
+            <motion.div
+              key={i}
+              className="absolute bg-white rounded-full"
+              initial={{ opacity: star.initialOpacity, scale: star.initialScale }}
+              animate={{ opacity: [0.1, 0.8, 0.1], scale: [0.5, 1.2, 0.5] }}
+              transition={{
+                duration: star.duration,
+                repeat: Infinity,
+                delay: star.delay,
+                ease: "easeInOut"
+              }}
+              style={{
+                top: `${star.top}%`,
+                left: `${star.left}%`,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+              }}
+            />
+          ))}
+        </div>
+
         <div className="absolute inset-0 z-0">
           <Particles id="tsparticles" init={particlesInit} options={particlesOptions} className="h-full w-full" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mt-10">
-          {/* Profile Placeholder */}
+          {/* Profile Image */}
           <motion.div whileHover={{ scale: 1.05 }} className="mx-auto mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-600 p-1 shadow-2xl shadow-purple-500/30">
-            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden">
-               <User className="w-16 h-16 text-slate-400" />
-            </div>
+            <img
+              src={profileImage}
+              alt="Patrick Muraya"
+              className="w-full h-full rounded-full object-cover"
+            />
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
-            It's <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Patrick Muraya</span>
+             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Patrick Muraya</span>
           </h1>
 
           <div className="h-8 md:h-12 mb-8">
@@ -158,9 +210,9 @@ export default function App() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <SocialButton href="https://github.com/" icon={<Github />} label="GitHub" dark />
-            <SocialButton href="https://linkedin.com/" icon={<Linkedin />} label="LinkedIn" dark />
-            <SocialButton href="mailto:patrick@example.com" icon={<Mail />} label="Email" dark />
+            <SocialButton href="https://github.com/Muraya-Pat" icon={<Github />} label="GitHub" dark />
+            <SocialButton href="https://www.linkedin.com/in/patrick-muraya/" icon={<Linkedin />} label="LinkedIn" dark />
+            <SocialButton href="mailto:patrickmuraya823@gmail.com" icon={<Mail />} label="Email" dark />
           </div>
 
           <div className="flex justify-center">
@@ -183,10 +235,7 @@ export default function App() {
         <Section id="about" title="About Me" icon={<User />}>
           <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 hover:shadow-2xl transition-shadow duration-300">
             <p className="text-lg leading-relaxed text-slate-600">
-              Hello! I'm Patrick, a multidisciplinary developer bridging the gap between <strong className="text-blue-600">complex backend logic</strong> and <strong className="text-purple-600">immersive user experiences</strong>. My background in game development gives me a unique perspective on performance and interactivity in web apps.
-            </p>
-            <p className="text-lg leading-relaxed text-slate-600 mt-4">
-              I thrive in environments where code meets creativity. Whether I'm architecting a scalable API, tweaking shader code for a game, or designing a pixel-perfect UI, I bring a holistic approach to every project.
+              I'm a <strong className="text-blue-600">visual-driven software developer</strong> passionate about crafting <strong className="text-purple-600">intuitive, human-centered digital experiences</strong>. I build software applications that merge <strong className="text-blue-600">strong engineering principles</strong> with thoughtful design—applications that are not only functional, but also <strong className="text-purple-600">user-friendly</strong>, inclusive, and <strong className="text-pink-600">visually engaging</strong>. My focus is simplifying complex ideas and workflows into clear, accessible, and intuitive tools that elevate the overall experience. While I'm especially inspired by innovations in <strong className="text-emerald-600">EdTech</strong>, my curiosity extends to any space where thoughtful design and well-built software can empower people and make life easier and more meaningful.
             </p>
           </div>
         </Section>
@@ -211,22 +260,28 @@ export default function App() {
         <Section id="experience" title="Experience" icon={<Briefcase />}>
           <div className="space-y-8 border-l-2 border-slate-200 ml-3 pl-8 py-2">
             <TimelineItem
-              role="Senior Software Developer"
-              company="Tech Solutions Ltd"
-              date="2023 - Present"
-              desc="Leading frontend migration to React/Next.js. Improved performance by 40%."
+              role="Junior Interactive Software/Game Developer"
+              company="Infoney Solutions Limited"
+              date="Aug 2025 - Present"
+              desc="Design and develop interactive educational games that transform learning content into engaging, learner-friendly experiences with intuitive UI/UX."
             />
             <TimelineItem
-              role="Game Developer"
-              company="Indie Studio"
-              date="2021 - 2023"
-              desc="Developed gameplay mechanics for Unity 2D platformers. Managed asset pipelines."
+              role="Digital Consultant (Freelance)"
+              company="P-Tech Solutions"
+              date="Aug 2023 - Present"
+              desc="Provide graphics design, web development, and digital marketing services to schools, nonprofits, and businesses, enhancing visibility and impact."
             />
             <TimelineItem
-              role="UI/UX Designer"
-              company="Freelance"
-              date="2019 - 2021"
-              desc="Designed responsive websites and conducted user research for local businesses."
+              role="ICT Intern"
+              company="Kenya Airports Authority - JKIA"
+              date="May 2024 - Aug 2024"
+              desc="Led team of 8 interns to transition Flight Information Distribution System. Deployed software on 200+ workstations and provided ICT support to 300+ users."
+            />
+            <TimelineItem
+              role="IT Support & Sales Personnel"
+              company="ShannyTech Phone Accessories LTD"
+              date="Apr 2023 - Aug 2023"
+              desc="Provided ICT support and led digital marketing efforts, increasing sales by 15% through improved online presence."
             />
           </div>
         </Section>
@@ -240,7 +295,7 @@ export default function App() {
                 <p className="text-blue-600 font-semibold">Kenyatta University, Kenya</p>
               </div>
               <span className="mt-2 md:mt-0 px-3 py-1 bg-slate-100 text-slate-600 text-sm font-bold rounded-full w-fit">
-                Graduated 2023
+                Graduated 2025
               </span>
             </div>
             <p className="text-slate-600 mt-4 leading-relaxed">
@@ -320,11 +375,15 @@ export default function App() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="mailto:patrick@example.com" className="flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-bold transition-all shadow-lg shadow-blue-500/30">
+              <a href="mailto:patrickmuraya823@gmail.com" className="flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-bold transition-all shadow-lg shadow-blue-500/30">
                 <Mail size={20} />
-                Say Hello
+                Email Me
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all border border-white/10">
+              <a href="https://wa.me/254750420656" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 rounded-full font-bold transition-all shadow-lg shadow-green-500/30">
+                <MessageCircle size={20} />
+                WhatsApp
+              </a>
+              <a href="https://www.linkedin.com/in/patrick-muraya/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all border border-white/10">
                 <Linkedin size={20} />
                 LinkedIn
               </a>
@@ -337,9 +396,10 @@ export default function App() {
       {/* FOOTER */}
       <footer className="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
         <div className="flex justify-center gap-6 mb-8">
-          <SocialButton href="#" icon={<Github />} label="" dark />
-          <SocialButton href="#" icon={<Linkedin />} label="" dark />
-          <SocialButton href="mailto:patrick@example.com" icon={<Mail />} label="" dark />
+          <SocialButton href="https://github.com/Muraya-Pat" icon={<Github />} label="" dark />
+          <SocialButton href="https://www.linkedin.com/in/patrick-muraya/" icon={<Linkedin />} label="" dark />
+          <SocialButton href="mailto:patrickmuraya823@gmail.com" icon={<Mail />} label="" dark />
+          <SocialButton href="https://wa.me/254750420656" icon={<MessageCircle />} label="" dark />
         </div>
         <p className="text-sm opacity-60">© {new Date().getFullYear()} Patrick Muraya • Kenya 🇰🇪</p>
       </footer>
@@ -433,11 +493,11 @@ function ProjectCard({ title, desc, tags, color }) {
 }
 
 function SocialButton({ href, icon, label, dark }) {
+  const isMailto = href.startsWith("mailto:");
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noreferrer"
+      {...(!isMailto && { target: "_blank", rel: "noreferrer" })}
       className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all ${
         dark
           ? "bg-white/10 text-white hover:bg-white/20"
