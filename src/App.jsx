@@ -103,8 +103,17 @@ export default function App() {
     setIsNavOpen(false);
     setTimeout(() => {
       const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 300);
+      if (element) {
+        const navHeight = 64; // 16 * 4 (h-16 = 4rem = 64px)
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 350);
   };
 
   return (
@@ -135,7 +144,11 @@ export default function App() {
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="md:hidden bg-slate-900/90 border-b border-white/10 backdrop-blur-xl overflow-hidden">
               <div className="flex flex-col p-4 gap-4">
                 {navLinks.map((link) => (
-                  <button key={link.name} onClick={() => scrollToSection(link.id)} className="flex items-center gap-3 text-lg font-medium text-slate-300 p-2 hover:bg-white/10 rounded-lg">
+                  <button 
+                    key={link.name} 
+                    onClick={() => scrollToSection(link.id)} 
+                    className="flex items-center gap-3 text-lg font-medium text-slate-300 p-2 hover:bg-white/10 rounded-lg active:bg-white/20 transition-colors touch-manipulation"
+                  >
                     <span className="text-blue-400">{link.icon}</span> {link.name}
                   </button>
                 ))}
