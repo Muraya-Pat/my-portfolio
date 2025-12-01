@@ -100,9 +100,11 @@ export default function App() {
   ];
 
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
     setIsNavOpen(false);
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 300);
   };
 
   return (
