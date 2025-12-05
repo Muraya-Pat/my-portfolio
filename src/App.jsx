@@ -9,6 +9,10 @@ import {
   GraduationCap, Award, Download, Cpu, Sparkles, MessageCircle
 } from 'lucide-react';
 import profileImage from './assets/profile.jpg';
+import githubIcon from './assets/github.png';
+import linkedinIcon from './assets/linkedin.png';
+import mailIcon from './assets/mail.png';
+import whatsappIcon from './assets/whatsapp.png';
 
 // --- CUSTOM TYPEWRITER HOOK ---
 const useTypewriter = (words, speed = 150, deleteSpeed = 100) => {
@@ -225,9 +229,9 @@ export default function App() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <SocialButton href="https://github.com/Muraya-Pat" icon={<Github />} label="GitHub" dark />
-            <SocialButton href="https://www.linkedin.com/in/patrick-muraya/" icon={<Linkedin />} label="LinkedIn" dark />
-            <SocialButton href="mailto:patrickmuraya823@gmail.com" icon={<Mail />} label="Email" dark />
+            <SocialButton href="https://github.com/Muraya-Pat" imgSrc={githubIcon} label="GitHub" dark />
+            <SocialButton href="https://www.linkedin.com/in/patrick-muraya/" imgSrc={linkedinIcon} label="LinkedIn" dark />
+            <SocialButton href="mailto:patrickmuraya823@gmail.com" imgSrc={mailIcon} label="Email" dark />
           </div>
 
           <motion.button onClick={() => scrollToSection('about')} animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-400 hover:text-white">
@@ -384,15 +388,15 @@ export default function App() {
 
             <div className="flex flex-wrap justify-start gap-4">
               <a href="mailto:patrickmuraya823@gmail.com" className="flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-bold transition-all shadow-lg shadow-blue-500/30">
-                <Mail size={20} />
+                <img src={mailIcon} alt="Email" className="w-5 h-5 object-contain" />
                 Email Me
               </a>
               <a href="https://wa.me/254750420656" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 rounded-full font-bold transition-all shadow-lg shadow-green-500/30">
-                <MessageCircle size={20} />
+                <img src={whatsappIcon} alt="WhatsApp" className="w-5 h-5 object-contain" />
                 WhatsApp
               </a>
               <a href="https://www.linkedin.com/in/patrick-muraya/" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all border border-white/10">
-                <Linkedin size={20} />
+                <img src={linkedinIcon} alt="LinkedIn" className="w-5 h-5 object-contain" />
                 LinkedIn
               </a>
             </div>
@@ -404,10 +408,10 @@ export default function App() {
       {/* FOOTER */}
       <footer className="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
         <div className="flex justify-center gap-6 mb-8">
-          <SocialButton href="https://github.com/Muraya-Pat" icon={<Github />} label="" dark />
-          <SocialButton href="https://www.linkedin.com/in/patrick-muraya/" icon={<Linkedin />} label="" dark />
-          <SocialButton href="mailto:patrickmuraya823@gmail.com" icon={<Mail />} label="" dark />
-          <SocialButton href="https://wa.me/254750420656" icon={<MessageCircle />} label="" dark />
+          <SocialButton href="https://github.com/Muraya-Pat" imgSrc={githubIcon} label="" dark />
+          <SocialButton href="https://www.linkedin.com/in/patrick-muraya/" imgSrc={linkedinIcon} label="" dark />
+          <SocialButton href="mailto:patrickmuraya823@gmail.com" imgSrc={mailIcon} label="" dark />
+          <SocialButton href="https://wa.me/254750420656" imgSrc={whatsappIcon} label="" dark />
         </div>
         <p className="text-sm opacity-60">© {new Date().getFullYear()} Patrick Muraya • Kenya 🇰🇪</p>
       </footer>
@@ -500,7 +504,7 @@ function ProjectCard({ title, desc, tags, color }) {
   );
 }
 
-function SocialButton({ href, icon, label, dark }) {
+function SocialButton({ href, icon, imgSrc, label, dark }) {
   const isMailto = href.startsWith("mailto:");
   return (
     <a
@@ -512,7 +516,7 @@ function SocialButton({ href, icon, label, dark }) {
           : "bg-slate-100 text-slate-600 hover:bg-blue-50 hover:text-blue-600"
       }`}
     >
-      {icon}
+      {imgSrc ? <img src={imgSrc} alt={label || "icon"} className="w-5 h-5 object-contain" /> : icon}
       {label && <span>{label}</span>}
     </a>
   );
