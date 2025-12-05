@@ -230,13 +230,6 @@ export default function App() {
             <SocialButton href="mailto:patrickmuraya823@gmail.com" icon={<Mail />} label="Email" dark />
           </div>
 
-          <div className="flex justify-center">
-            <button className="flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:scale-105 backdrop-blur-sm cursor-not-allowed" title="Download currently unavailable">
-                <Download size={20} />
-                {/* Download CV */}
-            </button>
-          </div>
-
           <motion.button onClick={() => scrollToSection('about')} animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-400 hover:text-white">
             <ChevronDown size={32} />
           </motion.button>
@@ -330,21 +323,25 @@ export default function App() {
               title="Artificial Intelligence Fundamentals"
               issuer="IBM Skills Build"
               date="2024"
+              color="bg-blue-50 text-blue-600"
             />
             <CertificateCard
               title="Cisco Learn-A-Thon Award 2025"
               issuer="Cisco Networking Academy"
               date="2025"
+              color="bg-cyan-50 text-cyan-600"
             />
             <CertificateCard
               title="Google Crowdsource Contributor Award"
               issuer="Google (Coursera)"
               date="2024"
+              color="bg-yellow-50 text-yellow-600"
             />
             <CertificateCard
               title="Cyber Security Essentials"
               issuer="IBM Skills Build"
               date="2024"
+              color="bg-purple-50 text-purple-600"
             />
           </div>
         </Section>
@@ -375,17 +372,17 @@ export default function App() {
 
         {/* CONTACT SECTION */}
         <Section id="contact" title="Get in Touch" icon={<Mail />}>
-          <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-10 rounded-3xl text-center shadow-2xl text-white relative overflow-hidden">
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-10 rounded-3xl text-left shadow-2xl text-white relative overflow-hidden">
             {/* Decorative Sparkles */}
             <Sparkles className="absolute top-4 left-4 text-yellow-400 opacity-20" size={40} />
             <Sparkles className="absolute bottom-4 right-4 text-purple-400 opacity-20" size={40} />
 
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's build something amazing!</h3>
-            <p className="text-slate-300 mb-8 max-w-xl mx-auto">
+            <p className="text-slate-300 mb-8 max-w-xl">
               I'm available for project work in software development, UI/UX design, and human-centered technology solutions. I also mentor learners in frontend development, EdTech, and UI/UX — feel free to reach out.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-start gap-4">
               <a href="mailto:patrickmuraya823@gmail.com" className="flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-bold transition-all shadow-lg shadow-blue-500/30">
                 <Mail size={20} />
                 Email Me
@@ -459,10 +456,10 @@ function TimelineItem({ role, company, date, desc }) {
   );
 }
 
-function CertificateCard({ title, issuer, date }) {
+function CertificateCard({ title, issuer, date, color }) {
   return (
     <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex items-start gap-4">
-      <div className="p-3 bg-yellow-50 text-yellow-600 rounded-lg">
+      <div className={`p-3 rounded-lg ${color || "bg-slate-50 text-slate-600"}`}>
         <Award size={24} />
       </div>
       <div>
