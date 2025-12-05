@@ -233,7 +233,7 @@ export default function App() {
           <div className="flex justify-center">
             <button className="flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:scale-105 backdrop-blur-sm cursor-not-allowed" title="Download currently unavailable">
                 <Download size={20} />
-                Download CV
+                {/* Download CV */}
             </button>
           </div>
 
@@ -290,7 +290,9 @@ export default function App() {
               role="ICT Intern"
               company="Kenya Airports Authority - JKIA"
               date="May 2024 - Aug 2024"
-              desc="Led team of 8 interns to transition Flight Information Distribution System. Deployed software on 200+ workstations and provided ICT support to 300+ users."
+              desc="•	Supported administration of the Flight Information Distribution Software (FIDS) system, ensuring accurate real-time flight data display across airport terminals.
+
+              • Collaborated with senior ICT staff and external software developers/providers to transition to a user-friendly Flight Information Distribution System currently in use."
             />
             <TimelineItem
               role="IT Support & Sales Personnel"
@@ -314,64 +316,59 @@ export default function App() {
               </span>
             </div>
             <p className="text-slate-600 mt-4 leading-relaxed">
-              Focused on Software Engineering, Data Structures, and Artificial Intelligence.
-              Active member of the University Tech Club and Lead Developer for the final year capstone project.
+              Focused on Software Engineering,
+              Human Computer Interaction, and Artificial Intelligence.
+              Active member of the Google Developer Student Club and Google Crowdsource Community.
             </p>
           </div>
         </Section>
 
         {/* CERTIFICATES SECTION */}
-        <Section id="certificates" title="Certifications" icon={<Award />}>
+        <Section id="certificates" title="Certifications & Awards" icon={<Award />}>
           <div className="grid md:grid-cols-2 gap-6">
             <CertificateCard
-              title="Google UX Design Professional Certificate"
+              title="Artificial Intelligence Fundamentals"
+              issuer="IBM Skills Build"
+              date="2024"
+            />
+            <CertificateCard
+              title="Cisco Learn-A-Thon Award 2025"
+              issuer="Cisco Networking Academy"
+              date="2025"
+            />
+            <CertificateCard
+              title="Google Crowdsource Contributor Award"
               issuer="Google (Coursera)"
               date="2024"
             />
             <CertificateCard
-              title="Unity Certified Associate: Game Developer"
-              issuer="Unity Technologies"
-              date="2023"
-            />
-            <CertificateCard
-              title="Meta Front-End Developer Professional Certificate"
-              issuer="Meta (Coursera)"
-              date="2023"
-            />
-            <CertificateCard
-              title="AWS Certified Cloud Practitioner"
-              issuer="Amazon Web Services"
-              date="2022"
+              title="Cyber Security Essentials"
+              issuer="IBM Skills Build"
+              date="2024"
             />
           </div>
         </Section>
 
         {/* PROJECTS SECTION */}
         <Section id="projects" title="Selected Projects" icon={<Code />}>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ProjectCard
-              title="AI Chat Assistant"
-              desc="Smart chatbot using OpenAI API for real-time code debugging."
-              tags={['React', 'Node.js', 'OpenAI']}
-              color="blue"
-            />
-            <ProjectCard
-              title="Neon Racer"
-              desc="High-speed endless runner built in Unity with procedural generation."
-              tags={['Unity', 'C#', '3D Modeling']}
+              title="MathQuiz Adventure"
+              desc="An interactive educational game blending challenging quizzes with an adventure-themed interface to make math engaging and fun."
+              tags={['Game Dev', 'Education', 'Interactive']}
               color="purple"
             />
             <ProjectCard
-              title="FinTrack Kenya"
-              desc="Mobile-first finance tracker with MPESA payment integration."
-              tags={['React Native', 'Firebase']}
-              color="emerald"
+              title="MemVerse System"
+              desc="A digital platform simplifying school club management by integrating membership tracking, communication, events, and payments."
+              tags={['Web App', 'Management', 'System Design']}
+              color="blue"
             />
             <ProjectCard
-              title="Design System V1"
-              desc="Comprehensive UI kit for rapid prototyping and accessible design."
-              tags={['Figma', 'Storybook']}
-              color="pink"
+              title="DaktariHub Software"
+              desc="A web-based health information management system enabling doctors to efficiently manage client data and health programs."
+              tags={['HealthTech', 'Data Management', 'Web']}
+              color="emerald"
             />
           </div>
         </Section>
