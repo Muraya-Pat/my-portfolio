@@ -380,10 +380,9 @@ export default function App() {
             <Sparkles className="absolute top-4 left-4 text-yellow-400 opacity-20" size={40} />
             <Sparkles className="absolute bottom-4 right-4 text-purple-400 opacity-20" size={40} />
 
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's build something amazing.</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's build something amazing!</h3>
             <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-              I'm currently available for freelance work and full-time positions.
-              Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              I'm available for project work in software development, UI/UX design, and human-centered technology solutions. I also mentor learners in frontend development, EdTech, and UI/UX — feel free to reach out.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
