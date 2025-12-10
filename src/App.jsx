@@ -259,11 +259,11 @@ export default function App() {
               <SkillPill icon={<Code />} label="Software" color="bg-blue-50 text-blue-600" />
               <SkillPill icon={<Gamepad2 />} label="Game Dev" color="bg-purple-50 text-purple-600" />
               <SkillPill icon={<Palette />} label="UI/UX" color="bg-pink-50 text-pink-600" />
-              <SkillPill icon={<Bot />} label="AI Agents" color="bg-emerald-50 text-emerald-600" />
+              <SkillPill icon={<Bot />} label="AI & Automation" color="bg-emerald-50 text-emerald-600" />
               <SkillPill icon={<Code />} label="React & Next.js" color="bg-cyan-50 text-cyan-600" />
               <SkillPill icon={<Gamepad2 />} label="Unity & C#" color="bg-slate-100 text-slate-600" />
               <SkillPill icon={<Palette />} label="Figma" color="bg-orange-50 text-orange-600" />
-              <SkillPill icon={<Bot />} label="Python & LLMs" color="bg-yellow-50 text-yellow-600" />
+              <SkillPill icon={<Bot />} label="Angular & Vue.js" color="bg-yellow-50 text-yellow-600" />
             </div>
           </div>
         </Section>
@@ -476,6 +476,7 @@ function CertificateCard({ title, issuer, date, color }) {
 }
 
 function ProjectCard({ title, desc, tags, color }) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const colors = {
     blue: "border-blue-500 hover:shadow-blue-200",
     purple: "border-purple-500 hover:shadow-purple-200",
@@ -492,7 +493,13 @@ function ProjectCard({ title, desc, tags, color }) {
         <h3 className="text-xl font-bold text-slate-800">{title}</h3>
         <ExternalLink className="text-slate-400 hover:text-blue-600 cursor-pointer" size={20} />
       </div>
-      <p className="text-slate-600 mb-6 h-12 overflow-hidden">{desc}</p>
+      <p className={`text-slate-600 mb-2 ${isExpanded ? '' : 'h-12 overflow-hidden'}`}>{desc}</p>
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="text-sm font-bold text-blue-600 hover:underline mb-6 block"
+      >
+        {isExpanded ? "Read Less" : "Read More"}
+      </button>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
           <span key={tag} className="px-2 py-1 text-xs font-bold text-slate-600 bg-slate-100 rounded-md">
