@@ -247,7 +247,7 @@ export default function App() {
         <Section id="about" title="About Me" icon={<User />}>
           <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 hover:shadow-2xl transition-shadow duration-300">
             <p className="text-lg leading-relaxed text-slate-600">
-              I'm a <strong className="text-blue-600">visual-driven software developer</strong> passionate about crafting <strong className="text-purple-600">intuitive, human-centered digital experiences</strong>. I build software applications that merge <strong className="text-blue-600">strong engineering principles</strong> with thoughtful design—applications that are not only functional, but also <strong className="text-purple-600">user-friendly</strong>, inclusive, and <strong className="text-pink-600">visually engaging</strong>. My focus is simplifying complex ideas and workflows into clear, accessible, and intuitive tools that elevate the overall experience. While I'm especially inspired by innovations in <strong className="text-emerald-600">EdTech</strong>, my curiosity extends to any space where thoughtful design and well-built software can empower people and make life easier and more meaningful.
+              I'm a <strong className="text-blue-600">visual-driven software developer</strong> passionate about crafting <strong className="text-purple-600">intuitive, human-centered digital experiences</strong>. I build software applications that merge <strong className="text-blue-600">strong engineering principles</strong> with thoughtful design: applications that are not only functional, but also <strong className="text-purple-600">user-friendly</strong>, inclusive, and <strong className="text-pink-600">visually engaging</strong>. My focus is simplifying complex ideas and workflows into clear, accessible, and intuitive tools that elevate the overall experience. While I'm especially inspired by innovations in <strong className="text-emerald-600">EdTech</strong>, my curiosity extends to any space where thoughtful design and well-built software can empower people and make life easier and more meaningful.
             </p>
           </div>
         </Section>
@@ -383,7 +383,7 @@ export default function App() {
 
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's build something amazing!</h3>
             <p className="text-slate-300 mb-8 max-w-xl">
-              I'm available for project work in software development, UI/UX design, and human-centered technology solutions. I also mentor learners in frontend development, EdTech, and UI/UX — feel free to reach out.
+              I'm available for project work in software development, UI/UX design, and human-centered technology solutions. I also mentor learners in frontend development, EdTech, and UI/UX; feel free to reach out.
             </p>
 
             <div className="flex flex-wrap justify-start gap-4">
